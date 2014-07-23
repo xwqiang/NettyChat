@@ -1,7 +1,6 @@
 package io.netty.example.server;
 
 import io.netty.bootstrap.ServerBootstrap;
-
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -9,6 +8,8 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.example.util.CharDecoder;
+import io.netty.example.util.TimeEncoder;
 
 public class NettyServer {
 
@@ -31,9 +32,8 @@ public class NettyServer {
 								@Override
 								public void initChannel(SocketChannel ch)
 										throws Exception {
-									ch.pipeline().addLast(
+									ch.pipeline().addLast(new TimeEncoder(),new CharDecoder(),
 											new ServerHandler());
-									System.out.println("init channel");
 								}
 
 							}).option(ChannelOption.SO_BACKLOG, 128) // (5)

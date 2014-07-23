@@ -8,6 +8,7 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.example.util.TimeDecoder;
 
 public class NettyClient {
     public static void main(String[] args) throws Exception {
@@ -23,7 +24,7 @@ public class NettyClient {
             b.handler(new ChannelInitializer<SocketChannel>() {
                 @Override
                 public void initChannel(SocketChannel ch) throws Exception {
-                    ch.pipeline().addLast(new CharDecoder(),new ClientHandler());
+                    ch.pipeline().addLast(new TimeDecoder(),new ClientReadTimeHandler());
                 }
             });
 

@@ -1,4 +1,4 @@
-package io.netty.example.client;
+package io.netty.example.util;
 
 import java.util.List;
 
