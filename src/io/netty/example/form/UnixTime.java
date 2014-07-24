@@ -1,10 +1,12 @@
 package io.netty.example.form;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class UnixTime {
+public class UnixTime implements Serializable{
 
-    private final int value;
+	private static final long serialVersionUID = 1L;
+	private final int value;
 
     public UnixTime() {
         this((int) (System.currentTimeMillis() / 1000L + 2208988800L));
